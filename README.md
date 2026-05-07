@@ -120,6 +120,11 @@ The packaged app is ad-hoc signed for local use on your Mac. It is not notarized
 and is not ready for public distribution outside your own machines without a
 Developer ID signing identity and notarization workflow.
 
+## License
+
+This project is licensed under the GNU General Public License v3.0. See
+[LICENSE](LICENSE).
+
 ## Typography
 
 Rows request Roboto when the font is installed on the system. If Roboto is
