@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-APP_NAME="DesktopFileWidget"
+APP_NAME="Pocket Finder"
 PRODUCT_NAME="DesktopFileWidget"
 BUNDLE_ID="edu.northeastern.codex.desktop-file-widget"
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DIST_DIR="$ROOT_DIR/dist"
 BUNDLE_PATH="$DIST_DIR/$APP_NAME.app"
-EXECUTABLE_PATH="$BUNDLE_PATH/Contents/MacOS/$APP_NAME"
+EXECUTABLE_PATH="$BUNDLE_PATH/Contents/MacOS/$PRODUCT_NAME"
 
 cd "$ROOT_DIR"
 
@@ -26,13 +26,13 @@ cat > "$BUNDLE_PATH/Contents/Info.plist" <<PLIST
   <key>CFBundleDevelopmentRegion</key>
   <string>en</string>
   <key>CFBundleExecutable</key>
-  <string>$APP_NAME</string>
+  <string>$PRODUCT_NAME</string>
   <key>CFBundleIdentifier</key>
   <string>$BUNDLE_ID</string>
   <key>CFBundleName</key>
-  <string>Pocket Finder</string>
+  <string>$APP_NAME</string>
   <key>CFBundleDisplayName</key>
-  <string>Pocket Finder</string>
+  <string>$APP_NAME</string>
   <key>CFBundlePackageType</key>
   <string>APPL</string>
   <key>CFBundleShortVersionString</key>

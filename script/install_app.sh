@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-APP_NAME="DesktopFileWidget"
+APP_NAME="Pocket Finder"
 BUNDLE_PATH="$ROOT_DIR/dist/$APP_NAME.app"
 TARGET_DIR="/Applications"
 

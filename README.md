@@ -40,14 +40,14 @@ your active apps.
 ./script/install_app.sh
 ```
 
-`package_app.sh` creates a release `.app` bundle at `dist/DesktopFileWidget.app`
+`package_app.sh` creates a release `.app` bundle at `dist/Pocket Finder.app`
 and ad-hoc signs it for local use on this Mac. `install_app.sh` copies it to
 `/Applications` when writable, otherwise to `~/Applications`.
 
 After install, launch it from Finder, Spotlight, Launchpad, or:
 
 ```bash
-open -g -n /Applications/DesktopFileWidget.app
+open -g -n "/Applications/Pocket Finder.app"
 ```
 
 ## Checks
