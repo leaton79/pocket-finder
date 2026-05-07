@@ -8,10 +8,18 @@ struct ExplorerWidgetView: View {
     @ObservedObject private var sharedState: SharedExplorerState
     @Environment(\.colorScheme) private var colorScheme
     @State private var mouseNavigationMonitor: Any?
+    let onClose: () -> Void
+    let onMinimize: () -> Void
 
-    init(viewModel: ExplorerViewModel) {
+    init(
+        viewModel: ExplorerViewModel,
+        onClose: @escaping () -> Void = {},
+        onMinimize: @escaping () -> Void = {}
+    ) {
         self.viewModel = viewModel
         self.sharedState = viewModel.sharedState
+        self.onClose = onClose
+        self.onMinimize = onMinimize
     }
 
     var body: some View {
@@ -97,6 +105,27 @@ struct ExplorerWidgetView: View {
 
     private func header(tokens: ThemeTokens) -> some View {
         HStack(spacing: 8) {
+            HStack(spacing: 7) {
+                Button(action: onClose) {
+                    Circle()
+                        .fill(Color(red: 1.0, green: 0.34, blue: 0.30))
+                        .frame(width: 13, height: 13)
+                        .overlay(Circle().stroke(Color.black.opacity(0.18), lineWidth: 0.6))
+                }
+                .buttonStyle(.plain)
+                .help("Close Pocket Finder")
+
+                Button(action: onMinimize) {
+                    Circle()
+                        .fill(Color(red: 1.0, green: 0.77, blue: 0.24))
+                        .frame(width: 13, height: 13)
+                        .overlay(Circle().stroke(Color.black.opacity(0.18), lineWidth: 0.6))
+                }
+                .buttonStyle(.plain)
+                .help("Minimize or restore Pocket Finder")
+            }
+            .padding(.trailing, 2)
+
             ZStack {
                 Circle()
                     .fill(tokens.headerGlow)

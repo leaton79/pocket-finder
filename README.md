@@ -76,6 +76,9 @@ swift build
 - Multi-select with native table selection behavior.
 - Drag selected files/folders as move/delete operations.
 - Light, dark, and system themes.
+- Header close and minimize controls. Minimize collapses the desktop widget into
+  a small strip because the app runs as a desktop accessory without a standard
+  Dock minimize target.
 
 ## Common Workflows
 

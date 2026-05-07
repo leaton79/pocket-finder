@@ -70,6 +70,9 @@ final class DesktopFileWidgetAppDelegate: NSObject, NSApplicationDelegate {
         panel.isMovableByWindowBackground = false
         panel.titlebarAppearsTransparent = true
         panel.titleVisibility = .hidden
+        panel.standardWindowButton(.closeButton)?.isHidden = true
+        panel.standardWindowButton(.miniaturizeButton)?.isHidden = true
+        panel.standardWindowButton(.zoomButton)?.isHidden = true
         panel.minSize = frame.size
         panel.maxSize = frame.size
         panel.backgroundColor = .clear
@@ -78,7 +81,35 @@ final class DesktopFileWidgetAppDelegate: NSObject, NSApplicationDelegate {
         panel.isReleasedWhenClosed = false
 
         let viewModel = ExplorerViewModel(sharedState: sharedState)
-        let root = ExplorerWidgetView(viewModel: viewModel)
+        var isCollapsed = false
+        let root = ExplorerWidgetView(
+            viewModel: viewModel,
+            onClose: { [weak self, weak panel] in
+                panel?.close()
+                self?.panels.removeValue(forKey: screen)
+            },
+            onMinimize: { [weak panel] in
+                guard let panel else { return }
+                if isCollapsed {
+                    panel.minSize = frame.size
+                    panel.maxSize = frame.size
+                    panel.setFrame(frame, display: true, animate: true)
+                    isCollapsed = false
+                } else {
+                    let collapsedFrame = NSRect(
+                        x: frame.minX,
+                        y: frame.minY,
+                        width: min(frame.width, 520),
+                        height: 74
+                    )
+                    panel.minSize = collapsedFrame.size
+                    panel.maxSize = collapsedFrame.size
+                    panel.setFrame(collapsedFrame, display: true, animate: true)
+                    isCollapsed = true
+                }
+                panel.orderBack(nil)
+            }
+        )
         let host = NSHostingController(rootView: root)
         panel.contentViewController = host
         panel.setFrame(frame, display: true)
