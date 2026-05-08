@@ -108,6 +108,21 @@ Finder advertises move/delete operations rather than copy.
 Use the context menu and choose `Move to Trash`. Permanent delete is not
 implemented.
 
+## macOS Folder Permissions
+
+macOS protects Desktop, Documents, and Downloads. On first launch, Pocket Finder
+may ask for access. Allow access so the widget can list your Desktop files.
+
+If you previously denied access or the widget shows a permission error:
+
+1. Open `System Settings`.
+2. Go to `Privacy & Security`.
+3. Open `Files and Folders`.
+4. Enable Desktop, Documents, and Downloads for `Pocket Finder`.
+5. If `Pocket Finder` is not listed, open `Full Disk Access`, add
+   `/Applications/Pocket Finder.app`, and enable it.
+6. Quit and reopen Pocket Finder.
+
 ## Project Structure
 
 - `Sources/DesktopFileWidgetApp`: macOS app shell, SwiftUI views, AppKit window/table bridges.

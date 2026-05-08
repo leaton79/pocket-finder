@@ -41,6 +41,14 @@ cat > "$BUNDLE_PATH/Contents/Info.plist" <<PLIST
   <string>1</string>
   <key>LSMinimumSystemVersion</key>
   <string>14.0</string>
+  <key>LSUIElement</key>
+  <true/>
+  <key>NSDesktopFolderUsageDescription</key>
+  <string>Pocket Finder lists and manages files on your Desktop when Desktop is selected.</string>
+  <key>NSDocumentsFolderUsageDescription</key>
+  <string>Pocket Finder lists and manages files in Documents when Documents is selected.</string>
+  <key>NSDownloadsFolderUsageDescription</key>
+  <string>Pocket Finder lists and manages files in Downloads when Downloads is selected.</string>
   <key>NSPrincipalClass</key>
   <string>NSApplication</string>
 </dict>

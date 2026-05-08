@@ -336,7 +336,15 @@ final class ExplorerViewModel: ObservableObject {
     }
 
     private func userMessage(for error: Error) -> String {
-        (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
+        let nsError = error as NSError
+        if nsError.domain == NSCocoaErrorDomain, nsError.code == NSFileReadNoPermissionError {
+            return """
+            macOS blocked Pocket Finder from reading “\(currentFolder.lastPathComponent)”.
+
+            Open System Settings > Privacy & Security > Files and Folders and allow Pocket Finder to access Desktop, Documents, and Downloads. If it is not listed there, add Pocket Finder under Full Disk Access, then relaunch the app.
+            """
+        }
+        return (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
     }
 }
 
